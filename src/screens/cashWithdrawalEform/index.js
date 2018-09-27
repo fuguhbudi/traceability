@@ -105,69 +105,15 @@ class CashWithdrawalEform extends SuperForm(Component) {
         // this.getFormField = this.getFormField.bind(this);
     }
 
-    // calculateAmountToDeposit = (amount) => {
-    //     // alert(amount);
-    //     // const { currentLanguage, form } = this.props;
-    //     // const { tempContractRate, currencyText, equivalentAmountCurrency } = this.state;
-    //     // let unformattedAmount = form.amount;
-    //     // if (amount) {
-    //     //     unformattedAmount = MaskService.toRawValue('money', amount.toString(), {
-    //     //         unit: UNIT_CURRENCY,
-    //     //         separator: SEPARATOR_CURRENCY,
-    //     //         delimiter: DELIMITER_CURRENCY,
-    //     //         precision: PRECISION_CURRENCY
-    //     //     });
-    //     // }
-    //     // unformattedAmount = unformattedAmount * Math.pow(10, PRECISION_CURRENCY);
-    //     // const creditedAmount = parseFloat(unformattedAmount).toFixed(2);
-    //     // const result = creditedAmount * parseFloat(tempContractRate);
-    //     // this.setValue("amount", unformattedAmount.toString());
-    //     // let formattedAmount = 0;
-    //     // if (result) {
-    //     //     formattedAmount = MaskService.toMask('money', result, {
-    //     //         unit: UNIT_CURRENCY,
-    //     //         separator: SEPARATOR_CURRENCY,
-    //     //         delimiter: DELIMITER_CURRENCY,
-    //     //         precision: PRECISION_CURRENCY
-    //     //     })
-    //     // }
-    //     // // this.setValue("debitedAmount", formattedAmount)
-    //     // this.setValue("amountToDeposit", formattedAmount);
-    //     // this.setValue("amountInWords", writtenNumber(result, { lang: currentLanguage }) + " " + currencyText);
-    //     // this.setValue("equivalentAmount", unformattedAmount.toString());
-    //
-    //     const {currentLanguage, form} = this.props;
-    //     const {tempContractRate,currencyText} = this.state;
-    //     let unformattedAmount = form.amount;
-    //     if (amount) {
-    //         unformattedAmount = MaskService.toRawValue('money', amount.toString(), {
-    //             unit: UNIT_CURRENCY,
-    //             separator: SEPARATOR_CURRENCY,
-    //             delimiter: DELIMITER_CURRENCY,
-    //             precision: PRECISION_CURRENCY
-    //         });
-    //     }
-    //     unformattedAmount = unformattedAmount * Math.pow(10, PRECISION_CURRENCY);
-    //     const creditedAmount = parseFloat(unformattedAmount).toFixed(2);
-    //     const result = creditedAmount * parseFloat(tempContractRate);
-    //     this.setValue("amount", unformattedAmount.toString());
-    //     // this.setValue("equivalentAmount", isNaN(result)? 0 : result.toString());
-    //     let formattedAmount = 0.00;
-    //     if (result) {
-    //         formattedAmount = MaskService.toMask('money', result, {
-    //             unit: UNIT_CURRENCY,
-    //             separator: SEPARATOR_CURRENCY,
-    //             delimiter: DELIMITER_CURRENCY,
-    //             precision: PRECISION_CURRENCY
-    //         })
-    //     }
-    //     this.setValue("equivalentAmount", formattedAmount);
-    //     this.setValue("amountInWords", writtenNumber(result, {lang : currentLanguage}) + " " + currencyText);
-    // };
-
-    calculateAmountToDeposit = (amount) => {
+    calculateEquivalentAmount = (value, amountInWords) => {
         const { currentLanguage, form } = this.props;
-        const { tempContractRate, currencyText, submitedAmount } = this.state;
+        let amount;
+        if (value !== '000') {
+            amount = value;
+        } else {
+            amount = form && form.amount && form.amount.value ? form.amount.value : '0';
+        }
+        const { tempContractRate, currencyText } = this.state;
         let unformattedAmount = form.amount;
         if (amount) {
             unformattedAmount = MaskService.toRawValue('money', amount.toString(), {
@@ -177,19 +123,13 @@ class CashWithdrawalEform extends SuperForm(Component) {
                 precision: PRECISION_CURRENCY
             });
         }
-        unformattedAmount = unformattedAmount * Math.pow(10, PRECISION_CURRENCY);
         const creditedAmount = parseFloat(unformattedAmount).toFixed(2);
         const result = creditedAmount * parseFloat(tempContractRate);
-        console.log(result, "result");
         this.setValue("amount", unformattedAmount.toString());
-        let formattedAmount = 0.00;
-        if (result) {
-            formattedAmount = MaskService.toMask('money', result, {
-                unit: UNIT_CURRENCY,
-                separator: SEPARATOR_CURRENCY,
-                delimiter: DELIMITER_CURRENCY,
-                precision: PRECISION_CURRENCY
-            })
+        this.setValue("equivalentAmount", result.toString());
+
+        if (amountInWords) {
+            this.setValue("amountInWords", writtenNumber(result, { lang: currentLanguage }) + " " + currencyText);
         }
 
         var lastResult = result;
@@ -212,24 +152,8 @@ class CashWithdrawalEform extends SuperForm(Component) {
         const { form } = this.props;
         const inputValues = formUtil.mapFTVO(form, true);
         const unformattedValues = parseInt(inputValues[fieldName]);
-
-        // console.log(submitedAmount,"submitedAmount")
-        // var lastResult = parseInt(inputValues[fieldName]);
-        // lastResult = lastResult.toString();
-        // console.log("Original data: ", lastResult);
-        // lastResult = lastResult.slice(0, -2);
-        // lastResult = parseInt(lastResult);
-        // console.log("After truncate: ", lastResult);
-
-        const formattedValues = MaskService.toMask('money', unformattedValues, {
-            unit: UNIT_CURRENCY,
-            separator: SEPARATOR_CURRENCY,
-            delimiter: DELIMITER_CURRENCY,
-            precision: PRECISION_CURRENCY
-        })
-        const final = formattedValues
-        return final
-    }
+        return unformattedValues;
+    };
 
     submitForm = () => {
         const { form, appQueueId, userData, appointmentId } = this.props;
@@ -262,9 +186,6 @@ class CashWithdrawalEform extends SuperForm(Component) {
                 sourceAccountCurrency: destinationAccountInfo.accountCurrency,
                 sourceAccountType: "Saving",
                 sourceAmountCurrency: inputValues.currency ? inputValues.currency : null,
-                //                 amount: inputValues.amount ? inputValues.amount : null,
-                sourceAmount: inputValues.amount ? inputValues.amount : null,
-                remark: inputValues.message ? inputValues.message : null,
 
                 recipientIdType: userData.depositories && userData.depositories[0] != null ? depoIdType !== null ? depoIdType : userData.depositories && userData.depositories[0].idType : depoIdType !== null ? depoIdType : null,
                 recipientIdNumber: userData.depositories && userData.depositories[0] != null ? depoIdNumber !== null ? depoIdNumber : userData.depositories && userData.depositories[0].idNumber : depoIdNumber !== null ? depoIdNumber : null,
@@ -275,20 +196,13 @@ class CashWithdrawalEform extends SuperForm(Component) {
                 // depositoryPhone: userData.depositories && userData.depositories[0] != null ? depoPhoneNumber !== null ? depoPhoneNumber : userData.depositories && userData.depositories[0].depositoryPhone : depoPhoneNumber !== null ? depoPhoneNumber : null,
                 depositoryType: userData.depositories && userData.depositories[0] != null ? userData.depositories[0].depositoryType : 'REGULAR',
                 amountInWords: inputValues.amountInWords ? inputValues.amountInWords : null,
-                // amountToDeposit: inputValues.amount ? inputValues.amount : null,
                 rate: "1",
                 verificationMethod: inputValues.methodVerification ? inputValues.methodVerification : null,
                 equivalentAmountCurrency: inputValues.currency ? inputValues.currency : null,
-                // equivalentAmount: inputValues.equivalentAmount ? inputValues.equivalentAmount : null,
-                equivalentAmount: inputValues.amount,
             },
-            // businessType: inputValues.businessType ? inputValues.businessType : 'TS',
-            // formTypeId: inputValues.formTypeId ? inputValues.formTypeId : "1",
-            // action: ACTION_CREATE,
-            appointmentId: appointmentId ? appointmentId : null,
-            // customerId: userData && userData.id ? userData.id : null
             formType: "CASH_WITHDRAWAL",
             cif: userData.cif,
+            appointmentId: appointmentId ? appointmentId : null,
         },
             req = {
                 path: SV_FORM,
@@ -660,7 +574,7 @@ class CashWithdrawalEform extends SuperForm(Component) {
                     this.props.dispatch(SetDepositoryFormData(data));
                 });
             } else {
-                alert("Please, input the correct value");
+                alert("Please, input the correct value ");
             }
         }
 
@@ -678,16 +592,6 @@ class CashWithdrawalEform extends SuperForm(Component) {
         };
         this.props.dispatch(SetFormState(newValues))
     };
-
-    // calculateAmountToDeposit = () => {
-    //     const { form, currentLanguage } = this.props;
-    //     const { tempContractRate, currencyText } = this.state;
-    //     const inputValues = formUtil.mapFTVO(form, true);
-    //     const creditedAmount = parseInt(inputValues.amount);
-    //     const result = creditedAmount * parseFloat(tempContractRate);
-    //     // this.setValue("amountToDeposit",isNaN(result)? 0 : result.toString());
-    //     this.setValue("amountInWords", writtenNumber(result, { lang: currentLanguage }) + " " + currencyText);
-    // };
 
     setDefaultValues = () => {
         const { form } = this.props;
@@ -993,7 +897,7 @@ class CashWithdrawalEform extends SuperForm(Component) {
 
         let destinationAccountLists = [];
         {
-            console.log(destinationAccountList,"destinationAccountList")
+            console.log(destinationAccountList, "destinationAccountList")
             for (let i = 0; i < destinationAccountList.length; i++) {
                 destinationAccountLists.push(
                     {
@@ -1224,7 +1128,7 @@ class CashWithdrawalEform extends SuperForm(Component) {
                 topButtonPopup={topButtonPopup}
                 verificationMethod={verificationMethod}
                 getAmountValueFromFieldName={this.getAmountValueFromFieldName}
-                calculateAmountToDeposit={this.calculateAmountToDeposit}
+                calculateEquivalentAmount={this.calculateEquivalentAmount}
                 recipientDisabled={recipientDisabled}
             />
             :

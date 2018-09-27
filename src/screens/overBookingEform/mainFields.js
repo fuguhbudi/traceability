@@ -1,26 +1,32 @@
 import React from 'react';
-import {Text, View} from "react-native";
-import {Spinner, Button, CheckBox} from 'native-base';
-import {PropTypes, i18n} from "helpers/common";
+import { Text, View } from "react-native";
+import { Spinner, Button, CheckBox } from 'native-base';
+import { PropTypes, i18n } from "helpers/common";
 import styles from "./style";
 import Card from 'components/card';
-import {PickerDropList} from 'components/picker';
-import {InputTextNormal} from 'components/inputFields';
+import { PickerDropList } from 'components/picker';
+import { InputTextNormal } from 'components/inputFields';
 import ButtonGroup from 'components/buttonGroup';
 import PopUp from 'components/popUp';
+import {
+    PRECISION_CURRENCY,
+    UNIT_CURRENCY,
+    DELIMITER_CURRENCY,
+    SEPARATOR_CURRENCY
+} from 'helpers/constant';
 import { TextInputMask } from 'react-native-masked-text';
 
 const MainFields = ({
     requestCardDestination, selectDestinationAccount, destinationAccountCardContent, currencyList, sourceAccountCardContent, selectSourceAccount,
-    calculateAmountToDeposit, currentStep, goToDepositoryField, depositoryAccountCardContent, agreeSubmitForm,
+    calculateEquivalentAmount, currentStep, goToDepositoryField, depositoryAccountCardContent, agreeSubmitForm,
     checkAgreeSubmitForm, toggleTncPopUp, submitFormButton, appQueueId, toggleDestinationAccountPopUp,
-    destinationAccountPopupVisible, popupTitle, popupBody, popupButton, popupFooter, topButtonPopup, getAmountValueFromFieldName, verificationMethod
+    destinationAccountPopupVisible, popupTitle, popupBody, popupButton, popupFooter, topButtonPopup, getAmountValueFromFieldName, verificationMethod,
 }) => {
     return (
         <View>
             <Card title={i18n('sourceAccount')}>
                 {
-                    requestCardDestination && requestCardDestination.inProgress ? <Spinner/> :
+                    requestCardDestination && requestCardDestination.inProgress ? <Spinner /> :
                         <Button style={styles.selectAccount} onPress={selectSourceAccount}>
                             {sourceAccountCardContent}
                         </Button>
@@ -32,16 +38,8 @@ const MainFields = ({
                         <PickerDropList name="currency" list={currencyList} />
                     </View>
                     <View style={styles.flexColumnRight}>
-                        {/* <InputTextNormal
-                            name='amount'
-                            maxLength={16}
-                            placeholder={i18n('typeAmount')}
-                            keyboardType='numeric'
-                            onEndEditing={calculateAmountToDeposit}
-                            // ref={ el => this.addDynamicFields(el, "amount") }
-                        /> */}
                         <TextInputMask
-                            refInput={(ref) => this.amount = ref }
+                            refInput={(ref) => this.amount = ref}
                             type={'money'}
                             name='amount'
                             maxLength={16}
@@ -51,8 +49,9 @@ const MainFields = ({
                                 delimiter: ',',
                                 unit: ''
                             }}
-                            onChangeText={(value) => { calculateAmountToDeposit(value)  }}
-                            value={getAmountValueFromFieldName("amount")}
+                            onChangeText={(value) => { calculateEquivalentAmount(value) }}
+                            onEndEditing={() => { calculateEquivalentAmount('000', true) }}
+                            value={getAmountValueFromFieldName('amount')}
                             style={styles.textInputMask}
                             underlineColorAndroid="transparent"
                         />
@@ -67,13 +66,13 @@ const MainFields = ({
                         multiline
                         parentStyle={styles.textArea}
                         maxLength={250}
-                        // ref={ el => this.addDynamicFields(el, "message") }
+                    // ref={ el => this.addDynamicFields(el, "message") }
                     />
                 </View>
             </Card>
             <Card title={i18n('destinationAccount')}>
                 {/*<Button onPress={goToDepositoryField} disabled={appQueueId} style={ appQueueId ? styles.selectAccountAppQueue : styles.selectAccount}>*/}
-                <Button onPress={selectDestinationAccount} style={ styles.selectAccount }>
+                <Button onPress={selectDestinationAccount} style={styles.selectAccount}>
                     {destinationAccountCardContent}
                 </Button>
             </Card>
@@ -87,7 +86,7 @@ const MainFields = ({
             <Card>
                 <View style={styles.flexColumn}>
                     <View style={styles.flexColumnLeft}>
-                        <CheckBox checked={agreeSubmitForm} color="#14af96" onPress={checkAgreeSubmitForm}/>
+                        <CheckBox checked={agreeSubmitForm} color="#14af96" onPress={checkAgreeSubmitForm} />
                     </View>
                     <View style={styles.flexColumnRightAgreement}>
                         <Text style={styles.mediumTextBold}>{i18n('agreeSubmitForm')}. <Text style={styles.agreeSubmitReadMore} onPress={toggleTncPopUp}>{i18n('readMore')}</Text></Text>

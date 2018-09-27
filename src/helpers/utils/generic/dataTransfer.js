@@ -4,13 +4,6 @@ export const normalizeEFormParams = (form, state) => {
     const inputValues = formUtil.mapFTVO(form, true);
     // console.log('inputValues: ',inputValues);
     let paramsObj = {
-        // appointmentCode: inputValues.appointmentCode ? inputValues.appointmentCode : null,
-        // branchId: inputValues.branchId ? inputValues.branchId : '11730',
-        // businessType: inputValues.businessType? inputValues.businessType: 'TS',
-        // customerId: null,
-        // eformId: null,
-        // formTypeId: inputValues.formTypeId? inputValues.formTypeId: "1",
-        // ticketNumber: null,
         ...formUtil.mapFTVO(form, true),
         depositoryType: inputValues.depositoryType ? inputValues.depositoryType : 'REGULAR',
         name: inputValues.name ? inputValues.name : null,

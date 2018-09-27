@@ -361,19 +361,15 @@ class CashDepositEform extends SuperForm(Component) {
         this.props.dispatch(SetFormState(newValues))
     };
 
-    calculateAmountToDeposit = () => {
-        const { form, currentLanguage } = this.props;
-        const { tempContractRate, currencyText } = this.state;
-        const inputValues = formUtil.mapFTVO(form, true);
-        const creditedAmount = parseInt(inputValues.amount);
-        const result = creditedAmount * parseFloat(tempContractRate);
-        // this.setValue("equivalentAmount",isNaN(result)? 0 : result.toString());
-        this.setValue("amountInWords", writtenNumber(result, { lang: currentLanguage }) + " " + currencyText);
-    };
-
-    calculateAmountToDeposit = (amount) => {
-        const { currentLanguage, form } = this.props;
-        const { tempContractRate, currencyText } = this.state;
+    calculateEquivalentAmount = (value, amountInWords) => {
+        const {currentLanguage, form} = this.props;
+        let amount;
+        if (value !== '000') {
+            amount = value;
+        } else {
+            amount = form && form.amount && form.amount.value ? form.amount.value : '0';
+        }
+        const {tempContractRate,currencyText} = this.state;
         let unformattedAmount = form.amount;
         if (amount) {
             unformattedAmount = MaskService.toRawValue('money', amount.toString(), {
@@ -383,30 +379,20 @@ class CashDepositEform extends SuperForm(Component) {
                 precision: PRECISION_CURRENCY
             });
         }
-        unformattedAmount = unformattedAmount * Math.pow(10, PRECISION_CURRENCY);
         const creditedAmount = parseFloat(unformattedAmount).toFixed(2);
         const result = creditedAmount * parseFloat(tempContractRate);
         this.setValue("amount", unformattedAmount.toString());
-        var lastResult = result;
-        lastResult = lastResult.toString();
-        lastResult = lastResult.slice(0, -2);
-        lastResult = parseInt(lastResult);
-        this.setValue("amountInWords", writtenNumber(lastResult, { lang: currentLanguage }) + " " + currencyText);
-        this.setValue("equivalentAmount", unformattedAmount.toString());
-
+        this.setValue("equivalentAmount", result.toString());
+        if (amountInWords) {
+            this.setValue("amountInWords", writtenNumber(result, {lang : currentLanguage}) + " " + currencyText);
+        }
     };
 
     getAmountValueFromFieldName = (fieldName) => {
         const {form} = this.props;
         const inputValues = formUtil.mapFTVO(form, true);
         const unformattedValues = parseInt(inputValues[fieldName]);
-        const formattedValues =  MaskService.toMask('money', unformattedValues, {
-            unit: UNIT_CURRENCY,
-            separator: SEPARATOR_CURRENCY,
-            delimiter: DELIMITER_CURRENCY,
-            precision: PRECISION_CURRENCY
-        })
-        return formattedValues;
+        return unformattedValues;
     };
 
     setDefaultValues = () => {
@@ -680,7 +666,7 @@ class CashDepositEform extends SuperForm(Component) {
                 selectDestinationAccount={this.selectDestinationAccount}
                 destinationAccountCardContent={destinationAccountCardContent}
                 currencyList={currencyList}
-                calculateAmountToDeposit={this.calculateAmountToDeposit}
+                calculateEquivalentAmount={this.calculateEquivalentAmount}
                 currentStep={currentStep}
                 goToDepositoryField={this.goToDepositoryField}
                 depositoryAccountCardContent={depositoryAccountCardContent}

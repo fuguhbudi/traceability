@@ -18,9 +18,10 @@ import {
 
 const MainFields = ({
     requestCardDestination, selectDestinationAccount, destinationAccountCardContent, currencyList,
-    calculateAmountToDeposit, currentStep, goToDepositoryField, depositoryAccountCardContent, agreeSubmitForm,
+    calculateEquivalentAmount, currentStep, goToDepositoryField, depositoryAccountCardContent, agreeSubmitForm,
     checkAgreeSubmitForm, toggleTncPopUp, submitFormButton, appointmentId, toggleDestinationAccountPopUp, recipientDisabled,
-    destinationAccountPopupVisible, popupTitle, popupBody, popupButton, popupFooter, topButtonPopup, verificationMethod, getAmountValueFromFieldName
+    destinationAccountPopupVisible, popupTitle, popupBody, popupButton, popupFooter, topButtonPopup, verificationMethod,
+    getAmountValueFromFieldName
 }) => {
     return (
         <View>
@@ -38,14 +39,6 @@ const MainFields = ({
                         <PickerDropList name="currency" list={currencyList} />
                     </View>
                     <View style={styles.flexColumnRight}>
-                        {/* <InputTextNormal
-                            name='amount'
-                            maxLength={16}
-                            placeholder={i18n('typeAmount')}
-                            keyboardType='numeric'
-                            onEndEditing={calculateAmountToDeposit}
-                            // ref={ el => this.addDynamicFields(el, "amount") }
-                        /> */}
                         <TextInputMask
                             refInput={(ref) => this.amount = ref}
                             type={'money'}
@@ -57,22 +50,9 @@ const MainFields = ({
                                 delimiter: ',',
                                 unit: ''
                             }}
-                            onChangeText={(value) => { calculateAmountToDeposit(value) }}
-                            value={getAmountValueFromFieldName("amount")}
-                            // options={{format: 'DD-MM-YYYY HH:mm:ss'}}
-                            // name={field.formField.name}
-                            // refInput={(ref) => this.amount = ref}
-                            // type={'money'}
-                            // options={{
-                            //     precision: PRECISION_CURRENCY,
-                            //     separator: SEPARATOR_CURRENCY,
-                            //     delimiter: DELIMITER_CURRENCY,
-                            //     unit: UNIT_CURRENCY
-                            // }}
-                            // onChangeText={(value) => { this.calculateAmountToDeposit(value)  }}
-                            // placeholder={i18n(field.formField.placeholder)}
-                            // maxLength={parseInt(field.formField.maxLength)}
-                            // value={this.getAmountValueFromFieldName(field.formField.name)}
+                            onChangeText={(value) => { calculateEquivalentAmount(value)  }}
+                            onEndEditing={ () => { calculateEquivalentAmount('000', true)} }
+                            value={getAmountValueFromFieldName('amount')}
                             style={styles.textInputMask}
                             underlineColorAndroid="transparent"
                         />

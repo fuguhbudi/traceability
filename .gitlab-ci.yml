@@ -1,0 +1,19 @@
+cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+        - .maven
+stages:
+    - deploy
+
+after_script:
+    - docker rmi $(docker images --quiet --filter "dangling=true")
+
+docker-compose:
+    stage: deploy
+    tags:
+        - bds
+        - dev
+    only:
+        - dev
+    script:
+        - docker-compose -f eform-mobile-dev.yml up -d --build

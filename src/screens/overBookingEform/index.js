@@ -140,24 +140,19 @@ class OverBookingEform extends SuperForm(Component) {
 
                 // depositoryType: userData.depositories && userData.depositories[0] != null ? userData.depositories[0].depositoryType : 'REGULAR',
                 amountInWords: inputValues.amountInWords ? inputValues.amountInWords : null,
-                amountToDeposit: submitedAmount,
                 rate: "1",
-                amount: submitedAmount,
                 destinationAccountType: destinationAccountInfo.accountType,
                 destinationAccountNumber: destinationAccountInfo.accountNumber,
                 destinationAccountName: destinationAccountInfo.accountName,
                 destinationAccountCurrency: destinationAccountInfo.accountCurrency,
-
                 sourceAccountCurrency: sourceAccountInfo.accountCurrency,
                 sourceAccountNumber: sourceAccountInfo.accountNumber,
                 sourceAccountName: sourceAccountInfo.accountName,
                 sourceAccountType: sourceAccountInfo.accountType,
-
                 verificationMethod: inputValues.methodVerification ? inputValues.methodVerification : null,
                 remark: inputValues.message ? inputValues.message : null,
 
                 equivalentAmountCurrency: inputValues.currency ? inputValues.currency : null,
-                equivalentAmount: inputValues.equivalentAmount ? inputValues.equivalentAmount : null,
 
             },
             // businessType: inputValues.businessType ? inputValues.businessType : 'TS',
@@ -217,9 +212,15 @@ class OverBookingEform extends SuperForm(Component) {
         console.log('===== ini params :' + JSON.stringify(req.params));
     };
 
-    calculateAmountToDeposit = (amount) => {
+    calculateEquivalentAmount = (value, amountInWords) => {
         const { currentLanguage, form } = this.props;
-        const { tempContractRate, currencyText, submitedAmount } = this.state;
+        let amount;
+        if (value !== '000') {
+            amount = value;
+        } else {
+            amount = form && form.amount && form.amount.value ? form.amount.value : '0';
+        }
+        const { tempContractRate, currencyText } = this.state;
         let unformattedAmount = form.amount;
         if (amount) {
             unformattedAmount = MaskService.toRawValue('money', amount.toString(), {
@@ -229,19 +230,12 @@ class OverBookingEform extends SuperForm(Component) {
                 precision: PRECISION_CURRENCY
             });
         }
-        unformattedAmount = unformattedAmount * Math.pow(10, PRECISION_CURRENCY);
         const creditedAmount = parseFloat(unformattedAmount).toFixed(2);
         const result = creditedAmount * parseFloat(tempContractRate);
-        console.log(result, "result");
         this.setValue("amount", unformattedAmount.toString());
-        let formattedAmount = 0.00;
-        if (result) {
-            formattedAmount = MaskService.toMask('money', result, {
-                unit: UNIT_CURRENCY,
-                separator: SEPARATOR_CURRENCY,
-                delimiter: DELIMITER_CURRENCY,
-                precision: PRECISION_CURRENCY
-            })
+        this.setValue("equivalentAmount", result.toString());
+        if (amountInWords) {
+            this.setValue("amountInWords", writtenNumber(result, { lang: currentLanguage }) + " " + currencyText);
         }
 
         var lastResult = result;
@@ -261,31 +255,11 @@ class OverBookingEform extends SuperForm(Component) {
     };
 
     getAmountValueFromFieldName = (fieldName) => {
-        // const { submitedAmount } = this.state;
-
-        // alert(fieldName);
         const { form } = this.props;
         const inputValues = formUtil.mapFTVO(form, true);
         const unformattedValues = parseInt(inputValues[fieldName]);
-
-        // console.log(submitedAmount,"submitedAmount")
-        // var lastResult = parseInt(inputValues[fieldName]);
-        // lastResult = lastResult.toString();
-        // console.log("Original data: ", lastResult);
-        // lastResult = lastResult.slice(0, -2);
-        // lastResult = parseInt(lastResult);
-        // console.log("After truncate: ", lastResult);
-
-        const formattedValues = MaskService.toMask('money', unformattedValues, {
-            unit: UNIT_CURRENCY,
-            separator: SEPARATOR_CURRENCY,
-            delimiter: DELIMITER_CURRENCY,
-            precision: PRECISION_CURRENCY
-        })
-        const final = formattedValues
-        return final
-        // return formattedValues;
-    }
+        return unformattedValues;
+    };
 
     getDestinationAccountName = () => {
         const { form, userData } = this.props;
@@ -1088,7 +1062,7 @@ class OverBookingEform extends SuperForm(Component) {
                 popupButton={popupButton}
                 popupFooter={popupFooter}
                 topButtonPopup={topButtonPopup}
-                calculateAmountToDeposit={this.calculateAmountToDeposit}
+                calculateEquivalentAmount={this.calculateEquivalentAmount}
                 getAmountValueFromFieldName={this.getAmountValueFromFieldName}
                 verificationMethod={verificationMethod}
                 destinationAccountCardContent={destinationAccountCardContent}
