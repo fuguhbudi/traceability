@@ -1,0 +1,87 @@
+{
+  "payload":{
+    "fields": [
+      {
+        "title": "beneficiaryAccount",
+        "fieldName": "beneficiaryAccount",
+        "type": "number",
+        "regex": "numeric",
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": true,
+        "placeholder": "beneficiaryAccount",
+        "hideTitle": false
+      },
+      {
+        "title": "destinationAccountName",
+        "fieldName": "destinationAccountName",
+        "type": "text",
+        "regex": "alphabet",
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": false,
+        "placeholder": "destinationAccountName",
+        "hideTitle": false
+      },
+      {
+        "title": "destinationAccountCurrency",
+        "fieldName": "destinationAccountCurrency",
+        "type": "text",
+        "regex": "alphabet",
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": false,
+        "placeholder": null,
+        "hideTitle": true
+      },
+      {
+        "title": "amount",
+        "fieldName": "amount",
+        "type": "number",
+        "regex": "numeric",
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": true,
+        "placeholder": "amount",
+        "hideTitle": false
+      },
+      {
+        "title": "amountCurrency",
+        "fieldName": "currency",
+        "type": "droplist",
+        "regex": null,
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": true,
+        "placeholder": null,
+        "hideTitle": true,
+        "content":[
+          {
+            "id" : "idr",
+            "label" : "IDR"
+          },
+          {
+            "id" : "usd",
+            "label" : "USD"
+          }
+        ]
+      },
+      {
+        "title": "selectDestinationAccount",
+        "fieldName": "destinationAccount",
+        "type": "droplist",
+        "regex": null,
+        "maxLength": 30,
+        "mandatory": true,
+        "editable": true,
+        "placeholder": null,
+        "hideTitle": false
+      }
+    ],
+    "order": [
+      "beneficiaryAccount",
+      "destinationAccountName||destinationAccountCurrency",
+      "amount||currency"
+    ]
+  }
+}

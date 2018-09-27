@@ -1,0 +1,7 @@
+version: '2'
+services:
+    eform-mobile-dev:
+        build: .
+        image: aprisma/react-eform-dev
+        ports:
+            - 8082:8081

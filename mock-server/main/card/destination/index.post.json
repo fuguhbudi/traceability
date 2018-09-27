@@ -1,0 +1,22 @@
+{
+  "payload": [
+    {
+      "allowDebit": "1",
+      "accountName": "Rizki Syafwan Asykari",
+      "allowCredit": "1",
+      "accountType": "Current Account",
+      "currency": "IDR",
+      "accountNumber": "1447010016165080",
+      "cardNumber": "1231231231231231"
+    },
+    {
+      "allowDebit": "1",
+      "accountName": "Pingkan Monintja",
+      "allowCredit": "1",
+      "accountType": "Saving Account",
+      "currency": "IDR",
+      "accountNumber": "1234567890123456",
+      "cardNumber": "3213213213213213"
+    }
+  ]
+}

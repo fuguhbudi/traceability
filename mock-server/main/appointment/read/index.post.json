@@ -1,0 +1,36 @@
+{
+  "payload": [
+    {
+      "createdDate": 1531136149598,
+      "statusAppointment": "new",
+      "start": 1531184400000,
+      "branchName": "KCP Jakarta S. Parman",
+      "end": 1531188000000,
+      "appointmentCode": "13032708"
+    },
+    {
+      "createdDate": 1531136212527,
+      "statusAppointment": "new",
+      "start": 1531274400000,
+      "branchName": "KCP Jakarta S. Parman",
+      "end": 1531278000000,
+      "appointmentCode": "23032912"
+    },
+    {
+      "createdDate": 1531136276005,
+      "statusAppointment": "ticket exchanged",
+      "start": 1531188000000,
+      "branchName": "KCP Jakarta R.S. Kanker Dharmais",
+      "end": 1531191600000,
+      "appointmentCode": "33033188"
+    },
+    {
+      "createdDate": 1531137095582,
+      "statusAppointment": "new",
+      "start": 1531184400000,
+      "branchName": "KCP Jakarta S. Parman",
+      "end": 1531188000000,
+      "appointmentCode": "13036448"
+    }
+  ]
+}

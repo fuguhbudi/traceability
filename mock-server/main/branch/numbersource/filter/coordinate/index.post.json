@@ -1,0 +1,20 @@
+{
+  "payload": [
+    {
+      "id": "11730",
+      "name": "KCP Jakarta S. Parman",
+      "location": "Wisma Barito Pacific, Jl. S. Parman Kav. 62-63, Slipi",
+      "distance": "0km",
+      "currentBookedSlot": "4",
+      "currentWaitingTime": "0 min"
+    },
+    {
+      "id": "11729",
+      "name": "KCP Jakarta R.S. Kanker Dharmais",
+      "location": "R.S. Kanker Dharmais, Jl. Let.Jend. S. Parman Kav. 84-88, Slipi",
+      "distance": "1.1661514km",
+      "currentBookedSlot": "0",
+      "currentWaitingTime": "Unavailable"
+    }
+  ]
+}

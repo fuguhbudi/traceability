@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "accountName": "Test01",
+    "email": "test01@mail.com",
+    "password": "string",
+    "phone": "081234567890",
+    "id": "ac4e6836-0953-4a59-8f5c-3fda81beda5e",
+    "isDeleted": false,
+    "createdBy": "SYSTEM",
+    "createdDate": "07-05-2018 07:51:38",
+    "updatedBy": "SYSTEM",
+    "updatedDate": "07-05-2018 07:51:38"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "payload": {
+    "action": "CREATE",
+    "eformId": "983",
+    "formTypeId": "1",
+    "appointmentId": "933",
+    "beneficiaryName": "Rizki Syafwan Asykari",
+    "idNumber": "87817283",
+    "beneficiaryAccount": "1447010016165080",
+    "amount": "500000",
+    "message": "Bayar Uang Makan",
+    "businessType": "TS",
+    "idType": "KTP",
+    "depositoryName": "Budiman",
+    "depositoryAddress": "Jakarta",
+    "depositoryPhone": "081225000562",
+    "currency": "IDR",
+    "depositoryType": "REGULAR"
+  }
+}

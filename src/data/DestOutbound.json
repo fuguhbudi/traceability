@@ -1,0 +1,85 @@
+{
+	"destinationAccounts": 
+							[
+						        {
+						            "id": "ff80808156b592460156b5c2d4ff0191",
+						            "name": "Bobby BP",
+						            "accountNumber": "888888828287",
+						            "bankCode": "ceb8fdfc-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "INDONESIA EXIMBANK",
+						            "beneficiaryAliasName": "Bobby"
+						        },
+						        {
+						            "id": "ff8080815576588b015576dd491b0252",
+						            "name": "Preechaya Pongthananikorn",
+						            "accountNumber": "234234234",
+						            "bankCode": "ceb81385-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "BANGKOK BANK PUBLIC CO.LTD.",
+						            "beneficiaryAliasName": "Preechaya"
+						        },
+						        {
+						            "id": "2c90806056015f3b0156016578100002",
+						            "name": "Mella Sinaga",
+						            "accountNumber": "fdgfd123",
+						            "bankCode": "ceb9e895-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "PT. BANK KESEJAHTERAAN EKONOMI",
+						            "beneficiaryAliasName": "Mella SInaga"
+						        },
+						        {
+						            "id": "ff80808155785dca01557ca2ccf5264e",
+						            "name": "Agus Hidayat",
+						            "accountNumber": "3197385894",
+						            "bankCode": "ceb8fdfc-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "INDONESIA EXIMBANK",
+						            "beneficiaryAliasName": "Agus H"
+						        },
+						        {
+						            "id": "ff808081567e40f901568c3df40e0a41",
+						            "name": "Monica Janet",
+						            "accountNumber": "78234678234",
+						            "bankCode": "ceb8fdfc-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "INDONESIA EXIMBANK",
+						            "beneficiaryAliasName": "Monica Janet"
+						        },
+						        {
+						            "id": "ff8080815596851401559ac310c20351",
+						            "name": "Robby Purba",
+						            "accountNumber": "1963850047",
+						            "bankCode": "ceb8fe1d-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "PT. BANK CENTRAL ASIA",
+						            "beneficiaryAliasName": "Robby Purba"
+						        },
+						        {
+						            "id": "ff8080815576588b015576db0dc2024b",
+						            "name": "Johny Cenna",
+						            "accountNumber": "123123123",
+						            "bankCode": "ceb8fdfc-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "INDONESIA EXIMBANK",
+						            "beneficiaryAliasName": "Jhony C."
+						        },
+						        {
+						            "id": "ff8080815596851401559ac310c20352",
+						            "name": "Bambang Pamungkas",
+						            "accountNumber": "1963850049",
+						            "bankCode": "ceb8fe1d-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "PT. BANK CENTRAL ASIA",
+						            "beneficiaryAliasName": "Bambang P."
+						        },
+						        {
+						            "id": "ff8080815596851401559ac310c20353",
+						            "name": "Cristian Marpaung",
+						            "accountNumber": "1963850048",
+						            "bankCode": "ceb8fe1d-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "PT. BANK CENTRAL ASIA",
+						            "beneficiaryAliasName": "Critian M."
+						        },
+						        {
+						            "id": "ff8080815596851401559ac310c20354",
+						            "name": "Benny Dolo",
+						            "accountNumber": "19638501000",
+						            "bankCode": "ceb8fe1d-a697-11e4-99bd-e7759a1d6fdc",
+						            "bankName": "PT. BANK CENTRAL ASIA",
+						            "beneficiaryAliasName": "Bendol"
+						        }
+						    ]
+}

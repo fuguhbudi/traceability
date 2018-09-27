@@ -1,0 +1,114 @@
+{
+  "payload": [
+    {
+      "formInput": {
+        "amountInWords": "three hundred thousand rupiah",
+        "amount": "300000",
+        "idType": "KTP",
+        "idNumber": "987192381",
+        "rate": "1",
+        "beneficiaryName": "Pingkan Monintja",
+        "beneficiaryAccount": "1234567890123456",
+        "beneficiaryAccountCurrency": "IDR",
+        "currency": "IDR",
+        "depositoryName": "Rizki Syafwan Asykari",
+        "amountToDeposit": "300000",
+        "depositoryPhone": "081225000562"
+      },
+      "appQueue": {
+        "appointmentCode": "22713712",
+        "branchId": "11730",
+        "queueNumber": "OBTV0001",
+        "timeStart": "17-07-2018 12:47:00",
+        "timeEnd": "17-07-2018 13:17:00",
+        "timeTolerance": 30,
+        "businessType": "TS-V",
+        "bdsCustomer": {
+          "accountName": "Rizki Syafwan Asykari",
+          "email": "rizki.syafwan@gmail.com",
+          "password": "rizki01",
+          "phone": "081225000562",
+          "accountType": "VIP",
+          "id": "e22b20ac-9a40-4df5-8b5c-8f2e7a0c8d08",
+          "description": "",
+          "createdBy": "SYSTEM",
+          "createdDate": "31-05-2018 10:40:24",
+          "updatedBy": "SYSTEM",
+          "updatedDate": "03-07-2018 16:22:13",
+          "deletedBy": "",
+          "isDeleted": false
+        },
+        "statusAppointment": "EXPIRED",
+        "id": "59a982f6-79db-4ac6-babc-2d0f3d04372c",
+        "createdBy": "SYSTEM",
+        "createdDate": "17-07-2018 12:46:29",
+        "updatedBy": "SYSTEM",
+        "updatedDate": "18-07-2018 19:44:25",
+        "isDeleted": false
+      },
+      "beneficiaryInformation": [
+        {
+          "accountNumber": "1234567890123456",
+          "accountName": "Pingkan Monintja",
+          "accountType": "Tabungan Mandiri",
+          "cardNumber": "3213213213213213",
+          "pin": "654321",
+          "currency": "IDR",
+          "allowDebit": "1",
+          "allowCredit": "1",
+          "cif": "1q2w3e4r5t",
+          "bdsCustomer": {
+            "accountName": "Pingkan Monintja",
+            "email": "pmonintja@gmail.com",
+            "password": "pingkan01",
+            "phone": "08987654321",
+            "accountType": "REGULAR",
+            "id": "07f0181c-70e4-4a59-a641-cfaa9c39c54c",
+            "description": "",
+            "createdBy": "SYSTEM",
+            "createdDate": "31-05-2018 10:40:24",
+            "updatedBy": "",
+            "deletedBy": "",
+            "isDeleted": false
+          },
+          "cardModel": "REGULAR",
+          "createdDate": "19-07-2018 15:03:15",
+          "updatedDate": "19-07-2018 15:03:15",
+          "isDeleted": false
+        }
+      ],
+      "formDetail": {
+        "formType": {
+          "type": "cash_deposit",
+          "transaction": {
+            "code": "CASH_DEPOSIT",
+            "name": "Cash Deposit",
+            "approvalFlag": false,
+            "cashIn": true,
+            "cashOut": false,
+            "businessType": "TS",
+            "createdBy": "SYSTEM",
+            "createdDate": "21-05-2018 18:00:00",
+            "updatedBy": "",
+            "deletedBy": "",
+            "isDeleted": false
+          },
+          "id": "1",
+          "createdBy": "SYSTEM",
+          "createdDate": "15-05-2018 19:35:22",
+          "updatedBy": "SYSTEM",
+          "updatedDate": "15-05-2018 19:35:22",
+          "isDeleted": false
+        },
+        "transactionStatus": "ACTIVE",
+        "businessType": "TS",
+        "id": "76a90468-44bc-4d0a-9331-0d108c8ab6a4",
+        "createdBy": "SYSTEM",
+        "createdDate": "17-07-2018 12:46:29",
+        "updatedBy": "SYSTEM",
+        "updatedDate": "17-07-2018 12:49:13",
+        "isDeleted": false
+      }
+    }
+  ]
+}

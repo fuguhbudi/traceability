@@ -1,0 +1,10 @@
+[
+  {
+    "id" : "idr",
+    "label" : "IDR"
+  },
+  {
+    "id" : "usd",
+    "label" : "USD"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "payload": {
+    "accountNumber": "1234567890123456",
+    "accountName": "Pingkan Monintja",
+    "accountType": "Saving Account",
+    "currency": "IDR",
+    "allowDebit": "1",
+    "allowCredit": "1",
+    "bdsCustomer": {
+      "id": 3,
+      "accountName": "Adrian Widjaja",
+      "email": "adrian@gmail.com",
+      "password": "adrian01",
+      "phone": "8716231321",
+      "depository": {
+        "id": 3,
+        "idNumber": "123456789012",
+        "depositoryName": "Adrian Widjaja",
+        "depositoryAddress": "Jakarta",
+        "depositoryPhone": "089876543210",
+        "idType": "KTP",
+        "depositoryType": "Regular"
+      },
+      "specialInfo": []
+    }
+  }
+}

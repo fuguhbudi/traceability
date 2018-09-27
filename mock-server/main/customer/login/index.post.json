@@ -1,0 +1,63 @@
+{
+  "payload": {
+    "cardInfo": {
+      "allowDebit": "1",
+      "cif": "1a2b3c4d5e",
+      "accountName": "Rizki Syafwan Asykari",
+      "allowCredit": "1",
+      "accountType": "Tabungan Mandiri",
+      "currency": "IDR",
+      "accountNumber": "1447010016165080",
+      "cardModel": "VIP",
+      "cardNumber": "1231231231231231"
+    },
+    "depositories": [
+      {
+        "cif": "1a2b3c4d5e",
+        "idType": "KTP",
+        "depositoryAddress": "Jakarta",
+        "id": "1",
+        "depositoryName": "Rizki Syafwan Asykari",
+        "idNumber": "987192381",
+        "depositoryPhone": "081225000562"
+      },
+      {
+        "cif": "1a2b3c4d5e",
+        "idType": "SIM",
+        "depositoryAddress": "Jakarta",
+        "id": "4",
+        "depositoryName": "Rizki Syafwan Asykari",
+        "idNumber": "9817029301",
+        "depositoryPhone": "081225000562"
+      }
+    ],
+    "bdsCustomer": {
+      "accountName": "Rizki Syafwan Asykari",
+      "phone": "081225000562",
+      "id": "e22b20ac-9a40-4df5-8b5c-8f2e7a0c8d08",
+      "email": "rizki.syafwan@gmail.com"
+    },
+    "appointment": [],
+    "specialInfo": [],
+    "cardDestination": [
+      {
+        "allowDebit": "1",
+        "accountName": "Pingkan Monintja",
+        "allowCredit": "1",
+        "accountType": "Tabungan Mandiri",
+        "currency": "IDR",
+        "accountNumber": "1234567890123456",
+        "cardNumber": "3213213213213213"
+      },
+      {
+        "allowDebit": "1",
+        "accountName": "Rizki Syafwan Asykari",
+        "allowCredit": "1",
+        "accountType": "Tabungan Mandiri",
+        "currency": "IDR",
+        "accountNumber": "1447010016165080",
+        "cardNumber": "1231231231231231"
+      }
+    ]
+  }
+}

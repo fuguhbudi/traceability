@@ -1,0 +1,18 @@
+{
+	"list" : [
+		{
+			"id": 1,
+			"accountNumber" : 1231231231231231,
+			"alias" : "Rizki Syafwan Asykari",
+			"balance" : "10,000,000.00",
+			"typeCard" : "savingAccount"
+		},
+		{
+			"id" : 2,
+			"accountNumber" : 1112223334445556 ,
+			"alias" : "Rizki Syafwan Asykari",
+			"balance" : "5,000,000.00",
+			"typeCard" : "savingAccount"
+		}
+	]
+}

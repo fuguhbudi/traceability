@@ -1,0 +1,44 @@
+{
+  "payload": [
+    {
+      "id": "CASH_DEPOSIT",
+      "label": "Cash Deposit"
+    },
+    {
+      "id": "CASH_WITHDRAWAL",
+      "label": "Cash Withdrawal"
+    },
+    {
+      "id": "CHECK_DEPOSIT",
+      "label": "Check Deposit"
+    },
+    {
+      "id": "CHECK_WITHDRAWAL",
+      "label": "Check Withdrawal"
+    },
+    {
+      "id": "OVERBOOKING",
+      "label": "Overbooking"
+    },
+    {
+      "id": "PAYMENT",
+      "label": "Payment"
+    },
+    {
+      "id": "PROVISION",
+      "label": "Provision"
+    },
+    {
+      "id": "TAX",
+      "label": "Tax"
+    },
+    {
+      "id": "TRANSFER_DOMESTIC",
+      "label": "Transfer Domestic"
+    },
+    {
+      "id": "TRANSFER_TT",
+      "label": "Transfer TT"
+    }
+  ]
+}

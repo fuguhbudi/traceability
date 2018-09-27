@@ -1,0 +1,46 @@
+{
+	"list" : [
+		{
+			"id": 1,
+			"name" : "Nikmatul Fajar",
+			"rekNumber" : 1234561234561234,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 2,
+			"name" : "Admaji Nugaraha",
+			"rekNumber" : 9876549876549876,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 3,
+			"name" : "Edward",
+			"rekNumber" : 4567890456789045,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 4,
+			"name" : "Mario Damianus Purno",
+			"rekNumber" : 6253728194776463,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 5,
+			"name" : "Michael Carrolius",
+			"rekNumber" : 7988435927829987,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 6,
+			"name" : "Gian Dasuki",
+			"rekNumber" : 8009843579823873,
+			"bank" : "inhouse"
+		},
+		{
+			"id": 7,
+			"name" : "Rico Ardiansyah",
+			"rekNumber" : 7989723456617111,
+			"bank" : "inhouse"
+		}
+	]
+}
